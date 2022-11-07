@@ -10,12 +10,12 @@ const schema = {
     data: [
         {
             name: 'node-data',
-            url: '/miserables.json',
+            url: '/vega/miserables.json',
             format: { type: 'json', property: 'nodes' },
         },
         {
             name: 'link-data',
-            url: '/miserables.json',
+            url: '/vega/miserables.json',
             format: { type: 'json', property: 'links' },
         },
     ],

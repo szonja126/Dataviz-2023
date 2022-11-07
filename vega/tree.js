@@ -3,7 +3,7 @@ const schema = {
     data: [
         {
             name: 'tree',
-            url: '/top-1000-extended-posters.json',
+            url: '/vega/top-1000-extended-posters.json',
             transform: [
                 {
                     type: 'filter',
