@@ -1,0 +1,11 @@
+body {
+    font-family: sans-serif;
+    margin: 5rem 0;
+    text-align: center;
+    width: 100vw;
+}
+
+nav a {
+    display: block;
+    line-height: 200%;
+}

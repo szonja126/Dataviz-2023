@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas test</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        let textX = 50;
+        const cursor = {
+            x: 300,
+            y: 300,
+        };
+
+        setup();
+
+        function setup() {
+            const pixelRatio = devicePixelRatio;
+            const canvasSize = canvas.getBoundingClientRect();
+            canvas.width = canvasSize.width * pixelRatio;
+            canvas.height = canvasSize.height * pixelRatio;
+            canvas.style.width = (canvas.width / pixelRatio) + 'px';
+            canvas.style.height = (canvas.height / pixelRatio) + 'px';
+            ctx.scale(pixelRatio, pixelRatio);
+            addEventListener('mousemove', (e) => {
+                cursor.x = e.clientX;
+                cursor.y = e.clientY;
+            });
+            requestAnimationFrame(draw);
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.fillStyle = 'hsla(0, 50%, 60%, 1)';
+            ctx.fillRect(100, 50, 200, 250);
+            ctx.fillStyle = 'hsla(100, 50%, 60%, .5)';
+            ctx.beginPath();
+            ctx.arc(cursor.x, cursor.y, 50, 0, 2 * Math.PI, true);
+            ctx.fill();
+            ctx.fillStyle = 'hsla(0, 0%, 0%, 1)';
+            ctx.save();
+            ctx.translate(textX, 100);
+            ctx.font = '30px sans-serif';
+            ctx.fillText('Canvas is (not) fun', 0, 0);
+            ctx.restore();
+            if (textX < 200) textX += 1;
+            requestAnimationFrame(draw);
+        }
+    </script>
+</body>
+</html>
