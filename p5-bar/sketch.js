@@ -8,6 +8,7 @@ function setup() {
     createCanvas(windowWidth / 2, windowHeight / 2);
     colorMode(HSL);
     textAlign(CENTER);
+    noLoop();
 }
 
 function draw() {
