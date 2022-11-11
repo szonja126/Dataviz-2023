@@ -18,6 +18,6 @@ function draw() {
     values.forEach((_, i) => {
         let posX = map(i, 0, values.length, marginLeft, width);
         rect(posX, height, rectWidth, -_);
-        text(round(_), posX + (marginLeft / 2), height - _ - textMargin);
+        text(round(_), posX + (rectWidth / 2), height - _ - textMargin);
     });
 }
