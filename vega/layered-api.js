@@ -26,7 +26,7 @@ function makeLayer(field, title, color, domain) {
 vl.register(vega, vegaLite, options);
 vl.layer(
     makeLayer('meteors', 'Total meteors observed', colors.meteor, [20000, 120000]),
-    makeLayer('corn', 'Fresh sweet corn (lbs per capita)', colors.corn, [5.0, 10.0]),
+    makeLayer('corn', 'Fresh sweet corn (lbs per capita)', colors.corn, [5.0, 10.0])
 )
     .data('data.csv')
     .config({

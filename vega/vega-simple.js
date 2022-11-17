@@ -7,7 +7,6 @@ const schema = {
             type: 'csv',
         },
     },
-    style: 'cell',
     width: 800,
     height: 500,
     padding: 0,
