@@ -6,6 +6,13 @@ const schema = {
             titleFontSize: 14,
             titleFontWeight: 'normal',
         },
+        locale: {
+            number: {
+                thousands: ' ',
+                decimal: ',',
+                grouping: [3],
+            },
+        },
     },
     data: {
         url: 'data.csv',
@@ -56,7 +63,6 @@ const schema = {
                 opacity: {
                     expr: 'mOpacity / 100',
                 },
-                tooltip: true,
             },
             encoding: {
                 y: {
@@ -81,9 +87,6 @@ const schema = {
                 opacity: {
                     expr: 'cOpacity / 100',
                 },
-                tooltip: {
-                    content: 'data', // v. encoding
-                },
             },
             encoding: {
                 y: {
@@ -100,7 +103,10 @@ const schema = {
             },
         },
         {
-            mark: 'rule',
+            mark: {
+                type: 'rule',
+                size: 1,
+            },
             encoding: {
                 opacity: {
                     condition: {
@@ -121,11 +127,13 @@ const schema = {
                         field: 'meteors',
                         type: 'quantitative',
                         title: 'Meteors',
+                        format: ',',
                     },
                     {
                         field: 'corn',
                         type: 'quantitative',
                         title: 'Corn',
+                        format: '.1f',
                     },
                 ],
             },
