@@ -41,7 +41,7 @@
                 cursor.x = e.clientX;
                 cursor.y = e.clientY;
             });
-            requestAnimationFrame(draw);
+            draw();
         }
 
         function draw() {
@@ -58,7 +58,9 @@
             ctx.font = '30px sans-serif';
             ctx.fillText('Canvas is (not) fun', 0, 0);
             ctx.restore();
-            if (textX < 200) textX += 1;
+            if (textX < 200) {
+                textX += 1;
+            }
             requestAnimationFrame(draw);
         }
     </script>

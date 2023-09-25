@@ -3,7 +3,7 @@
 
 <style>
     :root {
-        --accent-color: hsl(190, 50%, 50%);
+        --accent-color: hsl(190, 50%, 40%);
     }
 
     * {
@@ -18,6 +18,8 @@
 
     section {
         align-items: flex-start;
+        background: linear-gradient(120deg, transparent 90%, hsl(120 30% 70% / .8)),
+            linear-gradient(170deg, transparent 90%, hsl(140 40% 70% / .8));
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -34,6 +36,7 @@
     }
 
     section * {
+        font-size: 3rem;
         max-width: 80vw
     }
 
@@ -43,23 +46,66 @@
     }
 
     h1 {
+        background: linear-gradient(170deg, black 55%, var(--accent-color) 100%);
         font-size: 5rem;
-        text-shadow: 0px 0px 4px hsl(0 0% 90%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .title-page h1 {
+        text-stroke: 1px black;
+        -webkit-text-stroke: 1px hsl(0 0% 30%);
     }
 
     h2 {
         font-size: 3rem;
+        margin-top: -4rem;
+    }
+
+    .title-page h2 {
+        margin-top: initial;
     }
 
     ul {
-        font-size: 3rem;
-        line-height: 2;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        line-height: 1.25;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    li::before {
+        color: var(--accent-color);
+        content: "_";
+        position: absolute;
+        left: -1.75rem;
+        top: -6px;
     }
 
     a,
     a:visited {
         color: hsl(240 90% 40% / .8);
+        color: var(--accent-color);
         position: relative;
+    }
+
+    blockquote {
+        margin-left: 0;
+        position: relative;
+    }
+
+    blockquote::before {
+        content: "“";
+        left: -1rem;
+        position: absolute;
+    }
+
+    mark {
+        background: linear-gradient(120deg, hsl(120 80% 80% / .8), transparent 70%),
+            linear-gradient(340deg, hsl(140 40% 60% / .8), transparent 60%);
     }
 
     .current {
@@ -88,6 +134,10 @@
     .section-header {
         border-bottom: 3px solid var(--accent-color);
         padding-bottom: 1rem;
+    }
+
+    .narrow {
+        width: 60rem;
     }
 
     @keyframes gradient {
@@ -137,6 +187,56 @@
     <section>
         <h1>Példaprojektek</h1>
         <a href="https://github.com/nandordevai/Dataviz-2023">https://github.com/nandordevai/Dataviz-2023</a>
+    </section>
+
+    <section>
+        <h1>HTML és CSS alapok</h1>
+        <h2>HTML DOM</h2>
+        <blockquote>The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web.</blockquote>
+    </section>
+
+    <section>
+        <h1>HTML és CSS alapok</h1>
+        <h2>HTML DOM</h2>
+        <blockquote>The Document Object Model (DOM) is the <mark>data representation</mark> of the <mark>objects</mark> that comprise the <mark>structure and content</mark> of a document on the web.</blockquote>
+    </section>
+
+    <section>
+        <h1>HTML és CSS alapok</h1>
+        <h2>HTML DOM</h2>
+        <!-- TODO: példa -->
+    </section>
+
+    <section>
+        <h1>HTML és CSS alapok</h1>
+        <h2>CSS</h2>
+        <ul class="narrow">
+            <li>Class: elemekhez rendelhető attribútum, egyedi kulcsszavak listája</li>
+            <li>Selector: elemeket azonosító szabály</li>
+            <li>Property: adott elem megjelenését befolyásoló tulajdonság</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>HTML és CSS alapok</h1>
+        <h2>CSS</h2>
+        <!-- TODO: példa -->
+    </section>
+
+    <section>
+        <h1>HTML és CSS alapok</h1>
+        <h2>Canvas</h2>
+        <ul>
+            <li>HTML elem, amire JavaScripttel rajzolni lehet</li>
+            <li>Diagramok, animációk létrehozására, ill. fotó vagy videó megjelenítésére és manipulációjára alkalmas</li>
+            <li>Közvetlenül is scriptelhető, de p5.js-sel fogjuk használni</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>HTML és CSS alapok</h1>
+        <h2>Canvas</h2>
+        <p><a target="_blank" href="http://localhost:5500/canvas/">Demó</a></p>
     </section>
 
     <script>
