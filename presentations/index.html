@@ -1,0 +1,179 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<style>
+    :root {
+        --accent-color: hsl(190, 50%, 50%);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Helvetica;
+        font-size: 26px;
+        margin: 0;
+    }
+
+    section {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        left: 0;
+        margin: 0;
+        opacity: 0;
+        padding: 10vw;
+        position: absolute;
+        top: 0;
+        transition: opacity .3s;
+        width: 100vw;
+        z-index: -1;
+    }
+
+    section * {
+        max-width: 80vw
+    }
+
+    h1,
+    h2 {
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 5rem;
+        text-shadow: 0px 0px 4px hsl(0 0% 90%);
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    ul {
+        font-size: 3rem;
+        line-height: 2;
+    }
+
+    a,
+    a:visited {
+        color: hsl(240 90% 40% / .8);
+        position: relative;
+    }
+
+    .current {
+        opacity: 1;
+        z-index: 0;
+    }
+
+    .bg {
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .title-page {
+        animation: gradient 15s ease infinite;
+        background: radial-gradient(ellipse at 30% 30%, transparent, hsl(180 70% 20%)),
+            radial-gradient(ellipse at 0% 0%, transparent 0, transparent 70%, hsl(350 90% 20%) 100%),
+            linear-gradient(120deg, hsl(120 80% 80% / .8), transparent 70%),
+            linear-gradient(340deg, hsl(240 40% 60% / .8), transparent 60%);
+        background-size: 150% 150%;
+    }
+
+    section:has(.section-header) {
+        justify-content: flex-start;
+    }
+
+    .section-header {
+        border-bottom: 3px solid var(--accent-color);
+        padding-bottom: 1rem;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 0%;
+        }
+        50% {
+            background-position: 50% 50%;
+        }
+        100% {
+            background-position: 0% 0%;
+        }
+    }
+</style>
+
+<title>Making a presentation with HTML & JavaScript</title>
+
+<body>
+    <section class="title-page">
+        <h1>JavaScript alapok és<br>adatvizualizáció p5.js-sel</h1>
+        <h2>MOME Open Adatvizualizáció, 2023.</h2>
+    </section>
+
+    <section>
+        <h1>Dévai Nándor</h1>
+        <h2>mail@nandordevai.net</h2>
+        <ul>
+            <li>Design technologist</li>
+            <li>Senior frontend developer at Vizzu (<a href="https://vizzuhq.com">vizzuhq.com</a>)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1 class="section-header">JavaScript, HTML, CSS</h1>
+    </section>
+
+    <section>
+        <h1>Ajánlott eszközök</h1>
+        <ul>
+            <li>VS Code</li>
+            <li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server extension</a></li>
+            <li>Git (+ <a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph">Git Graph extension</a>)</li>
+            <li>Web inspector/Developer tools/Web developer tools (JS konzol)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Példaprojektek</h1>
+        <a href="https://github.com/nandordevai/Dataviz-2023">https://github.com/nandordevai/Dataviz-2023</a>
+    </section>
+
+    <script>
+        const show = s();
+        // window.onload = show(0);
+        window.onload = show.last();
+        document.body.onclick = () => { show.next(); };
+        document.body.onkeydown = (event) => {
+            if (['ArrowRight', ' '].includes(event.key)) show.next();
+            if (event.key === 'ArrowLeft') show.previous();
+            if (event.key === 'Home') show(0);
+        };
+
+        function s() {
+            const fn = (num) => {
+                document.querySelectorAll('section').forEach((section, i) => {
+                    section.classList.toggle('current', i === num);
+                });
+            }
+            const _next = (dir) => {
+                const el = document.querySelector('.current');
+                const newEl = el[`${dir}ElementSibling`];
+                if (newEl !== null && newEl.tagName === 'SECTION') {
+                    el.classList.remove('current');
+                    newEl.classList.add('current');
+                }
+            }
+            fn.last = () => {
+                Array.from(document.querySelectorAll('section')).at(-1).classList.add('current');
+            }
+            fn.next = () => {
+                _next('next');
+            }
+            fn.previous = () => {
+                _next('previous');
+            }
+            return fn;
+        }
+    </script>
+</body>
