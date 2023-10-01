@@ -8,10 +8,32 @@
         --color-3: hsl(180 70% 20%);
         --color-4: hsl(200 40% 60% / .8);
         --color-5: hsl(350 90% 20%);
+        --color-6: hsl(140 40% 90%);
     }
 
     * {
         box-sizing: border-box;
+    }
+
+    aside {
+        background: var(--color-6);
+        height: fit-content;
+        line-height: 2;
+        padding: 2rem;
+        position: relative;
+    }
+
+    aside::after {
+        background: var(--color-3);
+        content: '';
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform-origin: 100% 100%;
+        transform: skew(0, -20deg);
+        width: 4rem;
+        z-index: -1;
     }
 
     body {
@@ -42,7 +64,7 @@
     }
 
     section * {
-        font-size: 3rem;
+        font-size: 2.5rem;
         max-width: 80vw
     }
 
@@ -77,6 +99,11 @@
         padding: 0;
     }
 
+    ul ul {
+        margin-top: 1rem;
+        padding-left: 4rem;
+    }
+
     li {
         line-height: 1.25;
         margin-bottom: 2rem;
@@ -104,9 +131,13 @@
     }
 
     blockquote::before {
+        color: hsl(0 0% 80%);
         content: "“";
-        left: -1rem;
+        font-size: 10rem;
+        left: -1.5rem;
         position: absolute;
+        top: -2.5rem;
+        z-index: -1;
     }
 
     mark {
@@ -171,7 +202,8 @@
         src: url('/Fira Code Regular.ttf');
     }
 
-    code {
+    code,
+    pre {
         font-family: 'Fira Code';
     }
 </style>
@@ -234,9 +266,9 @@
         <h1>HTML és CSS alapok</h1>
         <h2>CSS</h2>
         <ul class="narrow">
-            <li>Class: elemekhez rendelhető attribútum, egyedi kulcsszavak listája</li>
-            <li>Selector: elemeket azonosító szabály</li>
-            <li>Property: adott elem megjelenését befolyásoló tulajdonság</li>
+            <li>class: elemekhez rendelhető attribútum, egyedi kulcsszavak listája</li>
+            <li>selector: elemeket azonosító szabály</li>
+            <li>property: adott elem megjelenését befolyásoló tulajdonság</li>
         </ul>
     </section>
 
@@ -251,8 +283,8 @@
         <h2>Canvas</h2>
         <ul>
             <li>HTML elem, amire JavaScripttel rajzolni lehet</li>
-            <li>Diagramok, animációk létrehozására, ill. fotó vagy videó megjelenítésére és manipulációjára alkalmas</li>
-            <li>Közvetlenül is scriptelhető, de p5.js-sel fogjuk használni</li>
+            <li>diagramok, animációk létrehozására, ill. fotó vagy videó megjelenítésére és manipulációjára alkalmas</li>
+            <li>közvetlenül is scriptelhető, de p5.js-sel fogjuk használni</li>
         </ul>
     </section>
 
@@ -269,27 +301,245 @@
             <li><code>let</code>: változó definiálása</li>
             <li>változónév: angol abc betűi javasoltak</li>
             <li>a változó az adott scope-on belül érvényes</li>
+            <li>legyen a név beszédes</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>JavaScript alapok</h1>
+        <h2>Feltételes elágazás</h2>
+        <ul>
+            <li><code><mark>if… else if… else</mark></code></li>
+            <li>ternary operator: <br><code>expression ? if-true : if-false</code></li>
+            <li><code>switch</code></li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>JavaScript alapok</h1>
+        <h2>Ciklusok</h2>
+        <ul>
+            <li>„hagyományos” <code>for</code> ciklus</li>
+            <li><code>forEach</code></li>
+            <li><code>for … of, for … in</code></li>
+            <li><code>map()</code></li>
+            <li>egyéb iterátorok</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>JavaScript alapok</h1>
+        <h2>Függvények</h2>
+        <ul>
+            <li><mark>first class objects</mark> – minden függvény egyben objektum is</li>
+            <li>függvénydefiniálás módjai
+                <ul>
+                    <li>function statement</li>
+                    <li>function expression (anonymous/named)</li>
+                    <li>arrow function</li>
+                    <li>method definition</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>JavaScript alapok</h1>
+        <h2>Osztályok</h2>
+        <ul>
+            <li>egyedi objektum létrehozására szolgáló minta</li>
+            <li><code>class</code> utasítással definiáljuk</li>
+            <li>constructor függvény inicializálja</li>
+            <li><code>new</code> utasítással hozunk létre új példányokat</li>
+            <li>meglévő osztályokból újakat származtathatunk az <code>extends</code> utasítással</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>JavaScript alapok</h1>
+        <h2>Modulok</h2>
+        <ul>
+            <li>más scriptekben felhasználható kódot tartalmazó JS fájlok</li>
+            <li><code>import</code> utasítással használjuk</li>
+            <li>az importáló fájlt modulként kell betölteni HTML-ből<br>
+            <code>&lt;script type="module" … &gt;</code></li>
+            <li>bármilyen kód kerülhet modulba, de jellemzően osztályokat és függvényeket tartalmaznak</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Demo</h1>
+        <h2>Canvas</h2>
+        <a href="../canvas/" target="_blank"><img src="./canvas.png" alt="" width="800"></a>
+    </section>
+
+    <section>
+        <h1 class="section-header">Adatvizualizáció p5.js-sel</h1>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Alapfunkciók</h2>
+        <ul>
+            <li>inicializálás: <code>setup()</code></li>
+            <li>rajzolás: <code>draw()</code></li>
+            <li>vezérlés: <code>loop(), noLoop(), redraw()</code></li>
+            <li>canvas létrehozása: <code>createCanvas()</code></li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Objektumok</h2>
+        <ul>
+            <li>2D és 3D primitívek – point, line, circle, rect</li>
+            <li>görbék – curve, bezier</li>
+            <li>vertex – tetszőleges 2D vagy 3D pont,<br>egyedi alakzatokhoz</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Koordináták és transzformáció</h2>
+        <div style="display: flex; align-items: flex-start;">
+            <ul>
+                <li>origó a canvas bal felső sarkában, jobbra és lefelé pozitív</li>
+                <li><code>translate(), rotate(), scale()</code></li>
+                <li><code>push()</code> és <code>pop()</code> függvényekkel elmenthetjük ill. visszaállíthatjuk az aktuális transzformációt</li>
+            </ul>
+            <img src="./p5 coordinate system.png" style="width: 25vw;">
+        </div>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Grafikai attribútumok</h2>
+        <ul>
+            <li>fill: kitöltés színe</li>
+            <li>stroke: körvonal színe</li>
+            <li>strokeWeight: körvonal vastagsága</li>
+            <li>alpha: áttetszőség</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Szín</h2>
+        <ul>
+            <li>color()
+                <ul>
+                    <li><code>colorMode(HSL)</code> ajánlott</li>
+                    <li>használható RGB, hex RGB, grayscale, color string</li>
+                    <li><code>lerpColor()</code> két szín közötti interpolációhoz</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Demo</h1>
+        <h2>p5 column chart</h2>
+        <a href="../p5-column/" target="_blank"><img src="column.png" style="width: 50vw;"></a>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Eseménykezelés</h2>
+        <ul>
+            <li>billentyűzet
+                <ul>
+                    <li><code>keyPressed(), keyReleased()</code></li>
+                </ul>
+            </li>
+            <li>egér
+                <ul>
+                    <li><code>mouseClicked(), mouseMoved()</code></li>
+                    <li><code>mouseX, mouseY</code></li>
+                </ul>
+            </li>
+            <li>rotáció, érintés</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Adatok és fájlok betöltése</h2>
+        <ul>
+            <li>JSON: <code>loadJSON()</code></li>
+            <li>CSV: <code>loadTable()</code></li>
+            <li>többféle: <code>httpGet()</code></li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Adatok és fájlok betöltése</h2>
+        <ul>
+            <aside>a betöltés aszinkron módon történik, <code>preload()</code> függvényt érdemes használni</aside>
+        </ul>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Math</h2>
+        <ul>
+            <li><code>abs(), floor(), max(), min(),</code> stb.</li>
+            <li><code>lerp()</code>: lineáris interpoláció</li>
+            <li><code>map()</code>: értéket alakít át két tartomány között</li>
+            <li><code>noise()</code>: 1, 2 vagy 3 dimenzióban</li>
+            <li><code>random()</code>: intervallum vagy tömb</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Math</h2>
+        <ul>
+            <li>vektorok
+                <ul>
+                    <li><code>createVector(x, y, [z])</code></li>
+                    <li><code>set(), add(), sub(), mult(),</code> stb.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>HTML és CSS</h2>
+        <ul>
+            <li>létrehozás: <code>createElement()</code>, egyéb 'create' függvények</li>
+            <li>kiválasztás: <code>select(), selectAll()</code> (CSS selectorral)</li>
+            <li>CSS class beállítás: <code>addClass(), removeClass(), toggleClass()</code></li>
+            <li>módosítás: <code>html(), attribute(), value()</code></li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>p5.js</h1>
+        <h2>Global vs. instance mode</h2>
+        <ul>
+            <li>alapértelmezett: global context (window object)</li>
+            <li>más JS könyvtárakkal vagy egynél több sketch használata esetén problémát okozhat</li>
+            <li>instance mode:</li>
+            <pre>
+let sketch = (p5) => {
+    p5.setup = () => {...};
+    p5.draw = () => {...};
+};
+const app = new p5(sketch, 'elementId');
+            </pre>
         </ul>
     </section>
 
     <script>
-        const show = s();
-        // window.onload = show(0);
-        window.onload = show.last();
-        document.body.onclick = () => { show.next(); };
-        document.body.onkeydown = (event) => {
-            if (['ArrowRight', ' '].includes(event.key)) show.next();
-            if (event.key === 'ArrowLeft') show.previous();
-            if (event.key === 'Home') show(0);
-        };
-
-        function s() {
+        const show = function () {
             const fn = (num) => {
                 document.querySelectorAll('section').forEach((section, i) => {
                     section.classList.toggle('current', i === num);
                 });
             }
-            const _next = (dir) => {
+            const next = (dir) => {
                 const el = document.querySelector('.current');
                 const newEl = el[`${dir}ElementSibling`];
                 if (newEl !== null && newEl.tagName === 'SECTION') {
@@ -297,16 +547,21 @@
                     newEl.classList.add('current');
                 }
             }
-            fn.last = () => {
-                Array.from(document.querySelectorAll('section')).at(-1).classList.add('current');
-            }
             fn.next = () => {
-                _next('next');
+                next('next');
             }
             fn.previous = () => {
-                _next('previous');
+                next('previous');
             }
             return fn;
-        }
+        }();
+        // window.onload = show(0);
+        window.onload = () => { Array.from(document.querySelectorAll('section')).at(-1).classList.add('current'); }
+        document.body.onclick = () => { show.next(); };
+        document.body.onkeydown = (event) => {
+            if (['ArrowRight', ' '].includes(event.key)) show.next();
+            if (event.key === 'ArrowLeft') show.previous();
+            if (event.key === 'Home') show(0);
+        };
     </script>
 </body>

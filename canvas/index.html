@@ -19,10 +19,10 @@
 <body>
     <canvas></canvas>
     <script>
-        const canvas = document.querySelector('canvas');
-        const ctx = canvas.getContext('2d');
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
         let textX = 50;
-        const cursor = {
+        let cursor = {
             x: 300,
             y: 300,
         };
@@ -30,14 +30,14 @@
         setup();
 
         function setup() {
-            const pixelRatio = devicePixelRatio;
-            const canvasSize = canvas.getBoundingClientRect();
+            let pixelRatio = devicePixelRatio;
+            let canvasSize = canvas.getBoundingClientRect();
             canvas.width = canvasSize.width * pixelRatio;
             canvas.height = canvasSize.height * pixelRatio;
             canvas.style.width = (canvas.width / pixelRatio) + 'px';
             canvas.style.height = (canvas.height / pixelRatio) + 'px';
             ctx.scale(pixelRatio, pixelRatio);
-            addEventListener('mousemove', (e) => {
+            canvas.addEventListener('mousemove', (e) => {
                 cursor.x = e.clientX;
                 cursor.y = e.clientY;
             });
