@@ -1,24 +1,24 @@
 const margin = 50;
-let _planets;
+let data;
 let planets;
 
 function preload() {
-    _planets = loadJSON('planets.json');
+    data = loadJSON('planets.json');
 }
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    const diameters = Object.values(_planets).map(_ => _.diameter);
-    const numPlanets = diameters.length;
+    const diameters = data.planets.map(planet => planet.diameter);
     const rMin = min(diameters);
     const rMax = max(diameters);
-    planets = Object.values(_planets).map((planet, i) => ({
+    const columnWidth = (width - margin * 2) / data.planets.length;
+    planets = data.planets.map((planet, i) => ({
         name: planet.name,
         r: round(map(planet.diameter, rMin, rMax, 5, 60)),
-        x: map(i, 0, numPlanets, margin, width),
+        x: round(margin + (i * columnWidth) + (columnWidth / 2)),
         active: false,
         moons: planet.moons.map((_) => ({
-            dR: random(-6, 6),
+            rDiff: random(-6, 6),
             omega: random(.002, .006),
         })),
     }));
@@ -49,7 +49,7 @@ function drawMoons(planet) {
             const rotation = moon.omega * millis() / 10;
             const phi = p5.Vector.fromAngle(
                 map(i, 0, planet.moons.length, 0, 2 * PI) + rotation,
-                50 + moon.dR
+                50 + moon.rDiff
             );
             translate(phi);
         } else {

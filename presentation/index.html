@@ -43,6 +43,10 @@
         overflow: hidden;
     }
 
+    .smaller * {
+        font-size: 2rem;
+    }
+
     section {
         align-items: flex-start;
         background: linear-gradient(120deg, transparent 90%, var(--color-1)),
@@ -60,7 +64,7 @@
         top: 0;
         transition: all .3s;
         width: 100vw;
-        /* z-index: -1; */
+        z-index: -1;
     }
 
     section * {
@@ -152,6 +156,7 @@
     .current {
         opacity: 1;
         transform: perspective(100px) translateZ(0px);
+        z-index: 1;
     }
 
     .current + section {
@@ -223,6 +228,7 @@
             <li>Design technologist</li>
             <li>Senior frontend developer at Vizzu (<a href="https://vizzuhq.com">vizzuhq.com</a>)</li>
         </ul>
+        <img style="position: absolute; top: 20%; right: 15%; width: 20%; border-radius: 50%; border-top-right-radius: 1rem; box-shadow: var(--accent-color) 0 0 5px;" src="./profile.jpg">
     </section>
 
     <section>
@@ -247,19 +253,7 @@
     <section>
         <h1>HTML és CSS alapok</h1>
         <h2>HTML DOM</h2>
-        <blockquote>The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web.</blockquote>
-    </section>
-
-    <section>
-        <h1>HTML és CSS alapok</h1>
-        <h2>HTML DOM</h2>
         <blockquote>The Document Object Model (DOM) is the <mark>data representation</mark> of the <mark>objects</mark> that comprise the <mark>structure and content</mark> of a document on the web.</blockquote>
-    </section>
-
-    <section>
-        <h1>HTML és CSS alapok</h1>
-        <h2>HTML DOM</h2>
-        <!-- TODO: példa -->
     </section>
 
     <section>
@@ -274,24 +268,12 @@
 
     <section>
         <h1>HTML és CSS alapok</h1>
-        <h2>CSS</h2>
-        <!-- TODO: példa -->
-    </section>
-
-    <section>
-        <h1>HTML és CSS alapok</h1>
         <h2>Canvas</h2>
         <ul>
             <li>HTML elem, amire JavaScripttel rajzolni lehet</li>
             <li>diagramok, animációk létrehozására, ill. fotó vagy videó megjelenítésére és manipulációjára alkalmas</li>
             <li>közvetlenül is scriptelhető, de p5.js-sel fogjuk használni</li>
         </ul>
-    </section>
-
-    <section>
-        <h1>HTML és CSS alapok</h1>
-        <h2>Canvas</h2>
-        <p><a target="_blank" href="http://localhost:5500/canvas/">Demó</a></p>
     </section>
 
     <section>
@@ -321,7 +303,7 @@
         <ul>
             <li>„hagyományos” <code>for</code> ciklus</li>
             <li><code>forEach</code></li>
-            <li><code>for … of, for … in</code></li>
+            <li><code>for … of, <strike>for … in</strike></code></li>
             <li><code>map()</code></li>
             <li>egyéb iterátorok</li>
         </ul>
@@ -507,7 +489,7 @@
     <section>
         <h1>p5.js</h1>
         <h2>HTML és CSS</h2>
-        <ul>
+        <ul class="smaller">
             <li>létrehozás: <code>createElement()</code>, egyéb 'create' függvények</li>
             <li>kiválasztás: <code>select(), selectAll()</code> (CSS selectorral)</li>
             <li>CSS class beállítás: <code>addClass(), removeClass(), toggleClass()</code></li>
@@ -518,7 +500,7 @@
     <section>
         <h1>p5.js</h1>
         <h2>Global vs. instance mode</h2>
-        <ul>
+        <ul class="smaller">
             <li>alapértelmezett: global context (window object)</li>
             <li>más JS könyvtárakkal vagy egynél több sketch használata esetén problémát okozhat</li>
             <li>instance mode:</li>
@@ -529,6 +511,35 @@ let sketch = (p5) => {
 };
 const app = new p5(sketch, 'elementId');
             </pre>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Demo</h1>
+        <h2>Planets & moons</h2>
+        <img src="./moons.png" alt="">
+    </section>
+
+    <section>
+        <h1>Források</h1>
+        <h2>Referenciák</h2>
+        <ul class="smaller">
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference">https://developer.mozilla.org/en-US/docs/Web/HTML/Reference</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">https://developer.mozilla.org/en-US/docs/Web/CSS/Reference</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API</a></li>
+            <li><a href="https://p5js.org/reference/">https://p5js.org/reference/</a></li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Források</h1>
+        <h2>Könyvek, tutorialok, stb.</h2>
+        <ul class="smaller">
+            <li>The Nature of Code (<a href="https://natureofcode.com">https://natureofcode.com</a>)</li>
+            <li>The Coding Train (<a href="https://www.youtube.com/c/TheCodingTrain/">https://www.youtube.com/c/TheCodingTrain/</a>)</li>
+            <li>Generative Design: Visualize, Program, and Create with JavaScript in p5.js</li>
+            <li>Processing Foundation (<a href="https://discourse.processing.org/">https://discourse.processing.org/</a>)</li>
         </ul>
     </section>
 
@@ -556,8 +567,7 @@ const app = new p5(sketch, 'elementId');
             return fn;
         }();
         // window.onload = show(0);
-        window.onload = () => { Array.from(document.querySelectorAll('section')).at(-1).classList.add('current'); }
-        document.body.onclick = () => { show.next(); };
+        window.onload = () => { Array.from(document.querySelectorAll('section')).at(-2).classList.add('current'); }
         document.body.onkeydown = (event) => {
             if (['ArrowRight', ' '].includes(event.key)) show.next();
             if (event.key === 'ArrowLeft') show.previous();

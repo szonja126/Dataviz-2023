@@ -12,7 +12,7 @@ function setup() {
 }
 
 function draw() {
-    background(255);
+    background(0, 0, 100);
     noStroke();
     fill(240, 40, 60);
     values.forEach((value, i) => {
