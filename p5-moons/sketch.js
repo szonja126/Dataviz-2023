@@ -1,4 +1,4 @@
-const margin = 50;
+let margin = 50;
 let data;
 let planets;
 
@@ -8,10 +8,10 @@ function preload() {
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    const diameters = data.planets.map(planet => planet.diameter);
-    const rMin = min(diameters);
-    const rMax = max(diameters);
-    const columnWidth = (width - margin * 2) / data.planets.length;
+    let diameters = data.planets.map(planet => planet.diameter);
+    let rMin = min(diameters);
+    let rMax = max(diameters);
+    let columnWidth = (width - margin * 2) / data.planets.length;
     planets = data.planets.map((planet, i) => ({
         name: planet.name,
         r: round(map(planet.diameter, rMin, rMax, 5, 60)),
@@ -46,8 +46,8 @@ function drawMoons(planet) {
         translate(planet.x, windowHeight / 2);
         let r = 2;
         if (!planet.active) {
-            const rotation = moon.omega * millis() / 10;
-            const phi = p5.Vector.fromAngle(
+            let rotation = moon.omega * millis() / 10;
+            let phi = p5.Vector.fromAngle(
                 map(i, 0, planet.moons.length, 0, 2 * PI) + rotation,
                 50 + moon.rDiff
             );

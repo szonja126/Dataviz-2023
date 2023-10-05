@@ -1,5 +1,5 @@
-const hMargin = 30;
-const vMargin = 200;
+let hMargin = 30;
+let vMargin = 200;
 let countries;
 let females;
 let males;
@@ -19,16 +19,16 @@ function setup() {
 
 function draw() {
     background(200, 40, 35);
-    const data = Object.entries(countries).filter(([code, name]) => {
+    let data = Object.entries(countries).filter(([code, name]) => {
         return (typeof females[code] !== 'undefined' && Object.keys(females[code]).includes('2012'))
             && (typeof males[code] !== 'undefined' && Object.keys(males[code]).includes('2012'));
     });
 
     activeItem = {};
     data.forEach(([code, name], i) => {
-        const x = map(i, 0, data.length, hMargin, width - hMargin);
-        const yf = map(females[code]['2012'], 0, 100, height - vMargin, vMargin);
-        const ym = map(males[code]['2012'], 0, 100, height - vMargin, vMargin);
+        let x = map(i, 0, data.length, hMargin, width - hMargin);
+        let yf = map(females[code]['2012'], 0, 100, height - vMargin, vMargin);
+        let ym = map(males[code]['2012'], 0, 100, height - vMargin, vMargin);
         if (abs(mouseX - x) <= 3) {
             activeItem = { code, x, yf, ym };
             stroke(200, 28, 95);
@@ -42,7 +42,7 @@ function draw() {
         fill(180, 80, 40);
         circle(x, ym, 5);
     });
-    fill(255);
+    fill(0, 0, 100);
     if (typeof activeItem.code !== 'undefined') {
         text(
             `${females[activeItem.code]['2012']}`,

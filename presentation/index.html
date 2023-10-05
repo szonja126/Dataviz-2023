@@ -16,9 +16,10 @@
     }
 
     aside {
-        background: var(--color-6);
+        background: linear-gradient(120deg, var(--color-1), var(--color-6) 70%),
+            linear-gradient(340deg, var(--color-2), var(--color-1) 60%);
         height: fit-content;
-        line-height: 2;
+        line-height: 1.5;
         padding: 2rem;
         position: relative;
     }
@@ -34,6 +35,16 @@
         transform: skew(0, -20deg);
         width: 4rem;
         z-index: -1;
+    }
+
+    .profile {
+        border-radius: 50%;
+        border-top-right-radius: 1rem;
+        box-shadow: var(--accent-color) 0 0 5px;
+        position: absolute;
+        right: 15%;
+        top: 20%;
+        width: 20%;
     }
 
     body {
@@ -228,7 +239,7 @@
             <li>Design technologist</li>
             <li>Senior frontend developer at Vizzu (<a href="https://vizzuhq.com">vizzuhq.com</a>)</li>
         </ul>
-        <img style="position: absolute; top: 20%; right: 15%; width: 20%; border-radius: 50%; border-top-right-radius: 1rem; box-shadow: var(--accent-color) 0 0 5px;" src="./profile.jpg">
+        <img class="profile" src="./profile.jpg">
     </section>
 
     <section>
@@ -252,6 +263,12 @@
 
     <section>
         <h1>HTML és CSS alapok</h1>
+        <h2>HTML</h2>
+        <aside class="narrow">A webes tartalom struktúráját és szemantikáját meghatározó leírónyelv.</aside>
+    </section>
+
+    <section>
+        <h1>HTML és CSS alapok</h1>
         <h2>HTML DOM</h2>
         <blockquote>The Document Object Model (DOM) is the <mark>data representation</mark> of the <mark>objects</mark> that comprise the <mark>structure and content</mark> of a document on the web.</blockquote>
     </section>
@@ -259,7 +276,13 @@
     <section>
         <h1>HTML és CSS alapok</h1>
         <h2>CSS</h2>
-        <ul class="narrow">
+        <aside>A weboldal stílusát és elrendezését meghatározó kód, az egyes HTML elemekhez rendelt vizuális tulajdonságok értékeit adja meg.</aside>
+    </section>
+
+    <section>
+        <h1>HTML és CSS alapok</h1>
+        <h2>CSS</h2>
+        <ul class="smaller">
             <li>class: elemekhez rendelhető attribútum, egyedi kulcsszavak listája</li>
             <li>selector: elemeket azonosító szabály</li>
             <li>property: adott elem megjelenését befolyásoló tulajdonság</li>
@@ -269,7 +292,7 @@
     <section>
         <h1>HTML és CSS alapok</h1>
         <h2>Canvas</h2>
-        <ul>
+        <ul class="smaller">
             <li>HTML elem, amire JavaScripttel rajzolni lehet</li>
             <li>diagramok, animációk létrehozására, ill. fotó vagy videó megjelenítésére és manipulációjára alkalmas</li>
             <li>közvetlenül is scriptelhető, de p5.js-sel fogjuk használni</li>
@@ -566,8 +589,7 @@ const app = new p5(sketch, 'elementId');
             }
             return fn;
         }();
-        // window.onload = show(0);
-        window.onload = () => { Array.from(document.querySelectorAll('section')).at(-2).classList.add('current'); }
+        window.onload = show(0);
         document.body.onkeydown = (event) => {
             if (['ArrowRight', ' '].includes(event.key)) show.next();
             if (event.key === 'ArrowLeft') show.previous();
