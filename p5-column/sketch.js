@@ -13,11 +13,14 @@ function setup() {
 
 function draw() {
     background(0, 0, 100);
-    noStroke();
+    noStroke(); //nincs körvonal
     fill(240, 40, 60);
-    values.forEach((value, i) => {
-        let posX = map(i, 0, values.length, marginLeft, width);
-        rect(posX, height, rectWidth, -value);
+    values.forEach((value, i) => { 
+        let posX = map(i, 0, values.length, marginLeft, width); //map fgv: 2 tartomány között transzformál egy értéket
+        //az i-t transzformáljuk, legkisebb értéke a bal margó, legnagyobb a teljes szélessége, 
+        //így ezt a területet felosztjuk az elemszámainkkal, automatikusan lesz térköz is
+        rect(posX, height, rectWidth, -value); //kirajzoljuk a téglalapot, P5.JS-ben felülről jönnek az értékek
+        //ezért teljes nagyságban kezdünk rajzolni és mínusz értékkel rajzoljuk  "lefelé"
         text(round(value), posX + (rectWidth / 2), height - value - textMargin);
     });
 }
