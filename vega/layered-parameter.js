@@ -15,7 +15,7 @@ const schema = {
         },
     },
     data: {
-        url: 'data.csv',
+        url: 'https://raw.githubusercontent.com/nandordevai/Dataviz-2023/main/vega/data.csv',
     },
     params: [
         {

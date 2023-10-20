@@ -1,0 +1,239 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<title>MOME Open Adatvizualizáció 2023.</title>
+
+<body>
+    <section class="title-page">
+        <h1>Vega és Vega-Lite</h1>
+        <h2>MOME Open Adatvizualizáció 2023.</h2>
+    </section>
+
+    <section>
+        <h1>Vega és Vega-Lite</h1>
+        <ul class="smaller">
+            <li>UW Interactive Data Lab fejlesztése </li>
+            <li>deklaratív formátum (JSON)</li>
+            <li>HTML canvas vagy SVG kimenet </li>
+            <li>interaktív</li>
+            <li>elmenthető képként (SVG vagy PNG)</li>
+            <li>megosztható kódként vagy Vega Editorban</li>
+            <li>rengeteg eszköz, integrációs lehetőség, programkönyvtár</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega vs Vega-Lite</h1>
+        <h2>Vega-Lite</h2>
+        <ul>
+            <li>magasabb szintű</li>
+            <li>általános diagramtípusok</li>
+            <li>egyszerű adattranszformációk</li>
+            <li>rövidebb specifikáció</li>
+            <li>automatikus tengelyek, skálák és jelmagyarázatok</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega vs Vega-Lite</h1>
+        <h2>Vega</h2>
+        <ul>
+            <li>alacsonyabb szintű</li>
+            <li>egyedi vizualizációkat tesz lehetővé</li>
+            <li>bonyolultabb interakciók és adattranszformációk lehetségesek</li>
+            <li>erre a formátumra fordíthatók le a Vega-Lite specifikációk, így továbbfejleszthetők</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1 class="section-header">Vega-Lite</h1>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>A specifikáció részei</h2>
+        <ul class="smaller">
+            <li>data: inline, külső fájl (CSV, JSON, TopoJSON), named/streaming data</li>
+            <li>mark: alapvető grafikai elem típusa, egyben meghatározza a diagram típusát is</li>
+            <li>encoding: adatok és vizuális tulajdonságok kapcsolata</li>
+            <li>parameters: felhasználói interakció</li>
+            <li>config: konzisztens vizuális témát lehet kialakítani – axis, legend, mark, stb. egyéb tulajdonságok: width, height, padding, stb.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Data</h2>
+        <ul>
+            <li>inline data: values tulajdonság, kevés adat esetén (vagy teszt, prototípus kialakítása során) használható</li>
+            <li>URL: JSON, CSV, TopoJSON adatok betöltése külső forrásból generátorok: sequence, graticule, sphere</li>
+            <li>named source: programmatikusan előállított ill. API-ból lekérdezett adatok</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Transform</h2>
+        <ul>
+            <li>objektumok tömbje</li>
+            <li>sorban végrehajtott transzformációkat tartalmaz </li>
+            <li>aggregate, bin, filter, stb.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Mark</h2>
+        <ul>
+            <li>alapvető formákat ad meg, amelyek egyes vizuális jellemzői (pozíció, szín, méret, stb.) később összeköthetők az adatokkal</li>
+            <li>megszabja a diagram típusát</li>
+            <li>primitív típusok: area, bar, line, text, stb. kompozit típusok, pl. boxplot</li>
+            <li>mark object további testreszabáshoz</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Encoding</h2>
+        <ul>
+            <li>encoding channel: pozíció, szín, szöveg,</li>
+            <li>data field: adat struktúrája és típusa alapján definiált mező </li>
+            <li>encoding: az előző kettő összekapcsolása</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Demo: simple chart</h2>
+        <a href="../vega/simple.html" target="_blank"><img class="centered" src="vega-simple.png" height="400"></a>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Composition</h2>
+        <ul>
+            <li>több diagram megjelenítése egyszerre</li>
+            <li>hierarchikus kompozíció is lehetséges</li>
+            <li>resolve: közös vagy külön-külön skálák</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Composition módok</h2>
+        <ul>
+            <li>facet (trellis chart),</li>
+            <li>layer (egymásra helyezett diagramok),</li>
+            <li>concatenate (horizontális vagy vertikális),</li>
+            <li>repeat (mint a facet, de megkapja a teljes datasetet)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Demo: layered chart</h2>
+        <a href="../vega/layered.html" target="_blank"><img class="centered" src="vega-layered.png" height="400"></a>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Parameters</h2>
+        <ul>
+            <li>interakciót tesznek lehetővé</li>
+            <li>name: azonosító</li>
+            <li>value: kezdeti érték</li>
+            <li>bind: inputhoz, jelmagyarázat elemeihez vagy skálához kötés expression: egyéb változóhoz ill. kifejezéshez</li>
+            <li>select: user input alapú query (pont v. intervallum)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Demo: parameters</h2>
+        <a href="../vega/layered-parameter.html" target="_blank"><img class="centered" src="vega-parameters.png" height="400"></a>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Configuration</h2>
+        <ul class="smaller">
+            <li>szám- és dátumformátum </li>
+            <li>jelmagyarázat</li>
+            <li>skálák, tengelyek</li>
+            <li>mark</li>
+            <li>lokalizáció </li>
+            <li>stb.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Tooltip</h2>
+        <ul>
+            <li>tooltip: true – alapértelmezett tooltip (mark definíció) </li>
+            <li>tooltip channel: egy vagy több fieldhez rendelhető </li>
+            <li>testreszabható a tooltipHandler függvény megadásával</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Scale</h2>
+        <ul>
+            <li>adattartományok közötti transzformáció </li>
+            <li>adat → vizuális érték</li>
+            <li>típusok: folyamatos, diszkrét, diszkretizált</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Realtime data</h2>
+        <ul>
+            <li>rendszeres frissítés <code>setInterval()</code>-lal</li>
+            <li>új adatok beillesztése <code>insert()</code> függvénnyel </li>
+            <li>opcionálisan régebbiek eltávolítása <code>remove()</code>-val </li>
+            <li><code>change(), changeset()</code></li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>API</h2>
+        <ul>
+            <li>globális vl objektum</li>
+            <li>Vega-Lite specifikációkat lehet létrehozni JavaScript kóddal </li>
+            <li>minden VL elem elérhető JS függvényekkel</li>
+            <li>lerövidíthető a repetitív kód</li>
+            <li>futásidőben konfigurálható diagramokat tudunk létrehozni</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Vega-Lite</h1>
+        <h2>Demo: API</h2>
+        <a href="../vega/layered-api.html" target="_blank"><img src="vega-api.png" class="centered" height="400"></a>
+    </section>
+
+    <section>
+        <h1>Vega</h1>
+        <h2>Demo: simple, tree</h2>
+        <a href="../vega/tree.html" target="_blank"><img src="vega-tree.png" class="centered" height="400"></a>
+    </section>
+
+    <section>
+        <h1>Vega és Vega-Lite</h1>
+        <h2>Források, eszközök</h2>
+        <ul class="smaller">
+            <li><a href="https://vega.github.io/">https://vega.github.io/</a></li>
+            <li><a href="https://vega.github.io/editor/">https://vega.github.io/editor/</a></li>
+            <li><a href="https://marketplace.visualstudio.com/items?itemName=RandomFractalsInc.vscode-vega-viewer">Vega Viewer VSCode extension</a></li>
+            <li><a href="https://github.com/nyurik/leaflet-vega">Leaflet plugin</a></li>
+            <li><a href="https://altair-viz.github.io">Altair: Python API Vega-Lite szintaxishoz</a></li>
+            <li><a href="https://observablehq.com/collection/@vega/vega-lite-api">Vega-Lite API @ Observable</a></li>
+            <li><a href="https://github.com/joaopalmeiro/awesome-vega">Awesome Vega – PowerBI, R, stb.</a></li>
+        </ul>
+    </section>
+
+    <script src="navigation.js"></script>
+</body>
