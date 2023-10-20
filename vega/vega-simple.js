@@ -2,7 +2,7 @@ const schema = {
     $schema: 'https://vega.github.io/schema/vega/v5.json',
     data: {
         name: 'data',
-        url: 'data.csv',
+        url: 'https://raw.githubusercontent.com/nandordevai/Dataviz-2023/main/vega/data.csv',
         format: {
             type: 'csv',
         },
